@@ -31,6 +31,7 @@ function addCityToSearch () {
     }
     console.log(selectedCities);
     selectedCities.push(rawCityInput);
+    console.log(selectedCities);
     localStorage.setItem("selected cities", JSON.stringify(selectedCities));
     cityList.innerHTML = "";
     for (var i = 0; i < selectedCities.length; i++){
@@ -38,6 +39,7 @@ function addCityToSearch () {
     listedCity.textContent = selectedCities[i];
     cityList.append(listedCity);
     }
+    uaCodes = [];
     for(var i = 0; i < selectedCities.length; i++) {
             sluggifiedCity = selectedCities[i].replaceAll(" ", "-")
             sluggifiedCity = "slug:" + sluggifiedCity.toLowerCase();
