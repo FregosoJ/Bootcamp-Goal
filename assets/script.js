@@ -71,7 +71,7 @@ searchButton.addEventListener("click", function () {
         .then(function (data) {
             var citySalOne = data;
             localStorage.setItem("citySalOne", JSON.stringify(citySalOne));
-        })
+            makeChart()})
     fetch(teleportApiUrl + uaCodes[0] + "/scores/")
         .then(function (response) {
             return response.json();
@@ -117,4 +117,6 @@ searchButton.addEventListener("click", function () {
         })
     }
 
-}})
+}   
+})
+
