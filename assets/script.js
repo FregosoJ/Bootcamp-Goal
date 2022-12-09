@@ -61,20 +61,20 @@ clearButton.addEventListener("click", function () {
     localStorage.clear();
     location.reload();
 })
-searchButton.addEventListener("click", function () {
+searchButton.addEventListener("click", async function () {
     getUaCodes();
     if (!uaCodes) {
         return
     } else {
-    fetch(teleportApiUrl + uaCodes[0] + "/salaries/")
+    await fetch(teleportApiUrl + uaCodes[0] + "/salaries/")
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
             var citySalOne = data;
             localStorage.setItem("citySalOne", JSON.stringify(citySalOne));
-            makeChart()})
-    fetch(teleportApiUrl + uaCodes[0] + "/scores/")
+            })
+    await fetch(teleportApiUrl + uaCodes[0] + "/scores/")
         .then(function (response) {
             return response.json();
         })
@@ -82,7 +82,7 @@ searchButton.addEventListener("click", function () {
             var cityScoreOne = data;
             localStorage.setItem("cityScoreOne", JSON.stringify(cityScoreOne))
         })
-    fetch(teleportApiUrl + uaCodes[0] + "/details/")
+    await fetch(teleportApiUrl + uaCodes[0] + "/details/")
         .then(function (response) {
             return response.json();
         })
@@ -90,7 +90,7 @@ searchButton.addEventListener("click", function () {
             var cityDetailsOne = data;
             localStorage.setItem("cityDetailsOne", JSON.stringify(cityDetailsOne));
         })
-    fetch(teleportApiUrl + uaCodes[0] + "/images/")
+    await fetch(teleportApiUrl + uaCodes[0] + "/images/")
         .then(function (response) {
             return response.json();
         })
@@ -99,7 +99,7 @@ searchButton.addEventListener("click", function () {
             localStorage.setItem("cityImagesOne", JSON.stringify(cityImagesOne));
         })
     if (uaCodes.length > 1){
-         fetch(teleportApiUrl + uaCodes[1] + "/salaries/") 
+         await fetch(teleportApiUrl + uaCodes[1] + "/salaries/") 
         .then(function (response) {
             return response.json();
         })
@@ -107,7 +107,7 @@ searchButton.addEventListener("click", function () {
             var citySalTwo = data;
             localStorage.setItem("citySalTwo", JSON.stringify(citySalTwo));
         })
-        fetch(teleportApiUrl + uaCodes[1] + "/scores/")
+        await fetch(teleportApiUrl + uaCodes[1] + "/scores/")
         .then(function (response) {
             return response.json();
         })
@@ -115,7 +115,7 @@ searchButton.addEventListener("click", function () {
             var cityScoreTwo = data;
             localStorage.setItem("cityScoreTwo", JSON.stringify(cityScoreTwo))
         })
-        fetch(teleportApiUrl + uaCodes[1] + "/details/")
+        await fetch(teleportApiUrl + uaCodes[1] + "/details/")
         .then(function (response) {
             return response.json();
         })
@@ -123,7 +123,7 @@ searchButton.addEventListener("click", function () {
             var cityDetailsTwo = data;
             localStorage.setItem("cityDetailsTwo", JSON.stringify(cityDetailsTwo));
         })
-        fetch(teleportApiUrl + uaCodes[1] + "/images/")
+        await fetch(teleportApiUrl + uaCodes[1] + "/images/")
         .then(function (response) {
             return response.json();
         })
@@ -132,8 +132,8 @@ searchButton.addEventListener("click", function () {
             localStorage.setItem("cityImagesTwo", JSON.stringify(cityImagesTwo));
         })
         }
-    if (uaCodes.length = 3) {
-        fetch(teleportApiUrl + uaCodes[2] + "/salaries/") 
+    if (uaCodes.length === 3) {
+        await fetch(teleportApiUrl + uaCodes[2] + "/salaries/") 
         .then(function (response) {
             return response.json();
         })
@@ -141,7 +141,7 @@ searchButton.addEventListener("click", function () {
             var citySalThree = data;
             localStorage.setItem("citySalThree", JSON.stringify(citySalThree));
         })
-        fetch(teleportApiUrl + uaCodes[2] + "/scores/")
+        await fetch(teleportApiUrl + uaCodes[2] + "/scores/")
         .then(function (response) {
             return response.json();
         })
@@ -149,7 +149,7 @@ searchButton.addEventListener("click", function () {
             var cityScoreThree = data;
             localStorage.setItem("cityScoreThree", JSON.stringify(cityScoreThree))
         })
-        fetch(teleportApiUrl + uaCodes[2] + "/details/")
+        await fetch(teleportApiUrl + uaCodes[2] + "/details/")
         .then(function (response) {
             return response.json();
         })
@@ -157,7 +157,7 @@ searchButton.addEventListener("click", function () {
             var cityDetailsThree = data;
             localStorage.setItem("cityDetailsThree", JSON.stringify(cityDetailsThree));
         })
-        fetch(teleportApiUrl + uaCodes[2] + "/images/")
+        await fetch(teleportApiUrl + uaCodes[2] + "/images/")
         .then(function (response) {
             return response.json();
         })
@@ -165,8 +165,8 @@ searchButton.addEventListener("click", function () {
             var cityImagesThree = data;
             localStorage.setItem("cityImagesThree", JSON.stringify(cityImagesThree));
         })
-    }
-
-}   
+        }
+        makeChart()
+   }
 })
 
