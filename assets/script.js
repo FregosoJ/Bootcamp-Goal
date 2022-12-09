@@ -80,6 +80,22 @@ searchButton.addEventListener("click", function () {
             var cityScoreOne = data;
             localStorage.setItem("cityScoreOne", JSON.stringify(cityScoreOne))
         })
+    fetch(teleportApiUrl + uaCodes[0] + "/details/")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            var cityDetailsOne = data;
+            localStorage.setItem("cityDetailsOne", JSON.stringify(cityDetailsOne));
+        })
+    fetch(teleportApiUrl + uaCodes[0] + "/images/")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            var cityImagesOne = data;
+            localStorage.setItem("cityImagesOne", JSON.stringify(cityImagesOne));
+        })
     if (uaCodes.length > 1){
          fetch(teleportApiUrl + uaCodes[1] + "/salaries/") 
         .then(function (response) {
@@ -96,6 +112,22 @@ searchButton.addEventListener("click", function () {
         .then(function (data) {
             var cityScoreTwo = data;
             localStorage.setItem("cityScoreTwo", JSON.stringify(cityScoreTwo))
+        })
+        fetch(teleportApiUrl + uaCodes[1] + "/details/")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            var cityDetailsTwo = data;
+            localStorage.setItem("cityDetailsTwo", JSON.stringify(cityDetailsTwo));
+        })
+        fetch(teleportApiUrl + uaCodes[1] + "/images/")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            var cityImagesTwo = data;
+            localStorage.setItem("cityImagesTwo", JSON.stringify(cityImagesTwo));
         })
         }
     if (uaCodes.length = 3) {
@@ -114,6 +146,22 @@ searchButton.addEventListener("click", function () {
         .then(function (data) {
             var cityScoreThree = data;
             localStorage.setItem("cityScoreThree", JSON.stringify(cityScoreThree))
+        })
+        fetch(teleportApiUrl + uaCodes[2] + "/details/")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            var cityDetailsThree = data;
+            localStorage.setItem("cityDetailsThree", JSON.stringify(cityDetailsThree));
+        })
+        fetch(teleportApiUrl + uaCodes[2] + "/images/")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            var cityImagesThree = data;
+            localStorage.setItem("cityImagesThree", JSON.stringify(cityImagesThree));
         })
     }
 
