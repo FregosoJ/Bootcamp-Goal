@@ -93,6 +93,7 @@ searchButton.addEventListener("click", async function () {
         .then(function (data) {
             var cityDetailsOne = data;
             localStorage.setItem("cityDetailsOne", JSON.stringify(cityDetailsOne));
+            // accordion-body1.innerHTML = `<p>${data.detail.catgories[0,1,2,5,7,13]}</p>`;
         })
     await fetch(teleportApiUrl + uaCodes[0] + "/images/")
         .then(function (response) {
@@ -102,6 +103,10 @@ searchButton.addEventListener("click", async function () {
             var cityImagesOne = data;
             localStorage.setItem("cityImagesOne", JSON.stringify(cityImagesOne));
         })
+for (let i = 0; i < "/details".length; i++) {
+    data += "/details" + cityScoreOne;
+}
+
         
     if (uaCodes.length > 1){
          await fetch(teleportApiUrl + uaCodes[1] + "/salaries/") 
