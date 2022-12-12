@@ -40,12 +40,6 @@ function addCityToSearch() {
         listedCity.textContent = selectedCities[i];
         cityList.append(listedCity);
     }
-<<<<<<< HEAD
-    for (var i = 0; i < selectedCities.length; i++) {
-        sluggifiedCity = selectedCities[i].replaceAll(" ", "-")
-        sluggifiedCity = "slug:" + sluggifiedCity.toLowerCase();
-        uaCodes.push(sluggifiedCity);
-=======
     uaCodes = [];
     for(var i = 0; i < selectedCities.length; i++) {
             sluggifiedCity = selectedCities[i].replaceAll(" ", "-")
@@ -53,7 +47,6 @@ function addCityToSearch() {
             uaCodes.push(sluggifiedCity);
          }
         localStorage.setItem("uacodes", JSON.stringify(uaCodes)); 
->>>>>>> main
     }
     localStorage.setItem("uacodes", JSON.stringify(uaCodes));
 }
@@ -76,92 +69,6 @@ searchButton.addEventListener("click", async function () {
     if (!uaCodes) {
         return
     } else {
-<<<<<<< HEAD
-
-
-        fetch(teleportApiUrl + uaCodes[0] + "/salaries/")
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                var citySalOne = data;
-                localStorage.setItem("citySalOne", JSON.stringify(citySalOne));
-                makeChart()
-            })
-        fetch(teleportApiUrl + uaCodes[0] + "/scores/")
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                var cityScoreOne = data;
-                localStorage.setItem("cityScoreOne", JSON.stringify(cityScoreOne))
-            })
-        if (uaCodes.length > 1) {
-            fetch(teleportApiUrl + uaCodes[1] + "/salaries/")
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data) {
-                    var citySalTwo = data;
-                    localStorage.setItem("citySalTwo", JSON.stringify(citySalTwo));
-                })
-            fetch(teleportApiUrl + uaCodes[1] + "/scores/")
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data) {
-                    var cityScoreTwo = data;
-                    localStorage.setItem("cityScoreTwo", JSON.stringify(cityScoreTwo))
-                })
-        }
-        if (uaCodes.length = 3) {
-            fetch(teleportApiUrl + uaCodes[2] + "/salaries/")
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data) {
-                    var citySalThree = data;
-                    localStorage.setItem("citySalThree", JSON.stringify(citySalThree));
-                })
-            fetch(teleportApiUrl + uaCodes[2] + "/scores/")
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data) {
-                    var cityScoreThree = data;
-                    localStorage.setItem("cityScoreThree", JSON.stringify(cityScoreThree))
-                })
-        }
-
-        if (uaCodes.length > 1){
-            fetch(teleportApiUrl + uaCodes[0] + "/details")
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(data){
-                console.log(data.categories[3].data[8])
-                var accordion1 = document.getElementById("accordion1")
-                accordion1.innerHTML = accordion1.innerHTML =`<p>fun fact, the average cost of a meal is $ ${data.categories[3].data[8].currency_dollar_value}</p> `// add more p tages in the ``
-                // localStorage.setItem("mealsCost", JSON.stringify(data.categories[3].data[8].currency_dollar_value))
-            })
-          
-            }
-            
-            for (var i = 0; i < accordion1.length; i++) {
-                var accordionText = document.createElement("p");
-                accordionText.textContent = accordion1[i];
-                cityList.append(accordionText);
-            }
-           
-    
-
-
-
-
-    }
-})
-
-=======
     await fetch(teleportApiUrl + uaCodes[0] + "/salaries/")
         .then(function (response) {
             return response.json();
@@ -274,5 +181,4 @@ $(function () {
         source: uaNames,
     });
 });
->>>>>>> main
 
