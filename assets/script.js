@@ -6,18 +6,12 @@ var cityList = document.querySelector("#cities-in-chart");
 
 var teleportApiUrl = "https://api.teleport.org/api/urban_areas/" 
 var uaCodes = [];
-//var selectedCities=[];
+
 
 function getUaCodes () {
     uaCodes = JSON.parse(localStorage.getItem("uacodes"))
 }
-function sluggifyInput () { //THIS FUNCTION NEEDS TO BE EDITED
-    // for(var i = 0; i < rawCityInput.length; i++) {
-    //     rawCityInput = rawCityInput.replace(" ", "-")
-    //  }
-    // var searchInput = "slug:" + rawCityInput.toLowerCase();
-    //  console.log(searchInput);
-}
+
 
 function makeCityInfo () {
     var cityInfo = [];
@@ -32,7 +26,6 @@ function makeCityInfo () {
             details: cityDetails,
             images: cityImages
         }
-        console.log(city);
         cityInfo.push(city);
     }
     else if (uaCodes.length === 2) {
@@ -96,7 +89,6 @@ function makeCityInfo () {
         cityInfo.push(cityTwo);
         cityInfo.push(cityThree);
     }
-console.log(cityInfo);
 localStorage.setItem("city info", JSON.stringify(cityInfo));
 }
 
@@ -105,14 +97,11 @@ function addCityToSearch () {
     if (!rawCityInput) {
         return;
     }
-    console.log(rawCityInput);
     var selectedCities = JSON.parse(localStorage.getItem("selected cities"));
     if (!selectedCities) {
         selectedCities = [];
     }
-    console.log(selectedCities);
     selectedCities.push(rawCityInput);
-    console.log(selectedCities);
     localStorage.setItem("selected cities", JSON.stringify(selectedCities));
     cityList.innerHTML = "";
     for (var i = 0; i < selectedCities.length; i++){
@@ -132,10 +121,7 @@ function addCityToSearch () {
     if (!uaCodes) {
         uaCodes = [];
     }
-    
-    //ADD IN MEANS TO LIMIT AMOUNT OF LISTED CITIES TO 3 AND ONLY 3 . . . CITYLIST.LENGTH < 3
-    
-
+        
 
 addCityButton.addEventListener("click", addCityToSearch);
 clearButton.addEventListener("click", function () {
@@ -247,7 +233,7 @@ searchButton.addEventListener("click", async function () {
             localStorage.setItem("cityImagesThree", JSON.stringify(cityImagesThree));
         })
         }
-        //makeChart()
+        makeChart()
         makeCityInfo()
    }
 })
