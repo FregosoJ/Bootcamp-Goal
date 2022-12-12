@@ -3,15 +3,16 @@ var searchButton = document.querySelector("#search-button");
 var clearButton = document.querySelector("#clear-button");
 var cityInput = document.querySelector("#city-input");
 var cityList = document.querySelector("#cities-in-chart");
+var accordionText = document.querySelector("#accordion-item")
 
-var teleportApiUrl = "https://api.teleport.org/api/urban_areas/" 
+var teleportApiUrl = "https://api.teleport.org/api/urban_areas/"
 var uaCodes = [];
 //var selectedCities=[];
 
-function getUaCodes () {
+function getUaCodes() {
     uaCodes = JSON.parse(localStorage.getItem("uacodes"))
 }
-function sluggifyInput () { //THIS FUNCTION NEEDS TO BE EDITED
+function sluggifyInput() { //THIS FUNCTION NEEDS TO BE EDITED
     // for(var i = 0; i < rawCityInput.length; i++) {
     //     rawCityInput = rawCityInput.replace(" ", "-")
     //  }
@@ -19,7 +20,7 @@ function sluggifyInput () { //THIS FUNCTION NEEDS TO BE EDITED
     //  console.log(searchInput);
 }
 
-function addCityToSearch () {
+function addCityToSearch() {
     var rawCityInput = cityInput.value;
     if (!rawCityInput) {
         return;
@@ -33,25 +34,25 @@ function addCityToSearch () {
     selectedCities.push(rawCityInput);
     localStorage.setItem("selected cities", JSON.stringify(selectedCities));
     cityList.innerHTML = "";
-    for (var i = 0; i < selectedCities.length; i++){
-    var listedCity = document.createElement("li");
-    listedCity.textContent = selectedCities[i];
-    cityList.append(listedCity);
+    for (var i = 0; i < selectedCities.length; i++) {
+        var listedCity = document.createElement("li");
+        listedCity.textContent = selectedCities[i];
+        cityList.append(listedCity);
     }
-    for(var i = 0; i < selectedCities.length; i++) {
-            sluggifiedCity = selectedCities[i].replaceAll(" ", "-")
-            sluggifiedCity = "slug:" + sluggifiedCity.toLowerCase();
-            uaCodes.push(sluggifiedCity);
-         }
-        localStorage.setItem("uacodes", JSON.stringify(uaCodes)); 
+    for (var i = 0; i < selectedCities.length; i++) {
+        sluggifiedCity = selectedCities[i].replaceAll(" ", "-")
+        sluggifiedCity = "slug:" + sluggifiedCity.toLowerCase();
+        uaCodes.push(sluggifiedCity);
     }
-    uaCodes = JSON.parse(localStorage.getItem("uacodes"));
-    if (!uaCodes) {
-        uaCodes = [];
-    }
-    
-    //ADD IN MEANS TO LIMIT AMOUNT OF LISTED CITIES TO 3 AND ONLY 3 . . . CITYLIST.LENGTH < 3
-    
+    localStorage.setItem("uacodes", JSON.stringify(uaCodes));
+}
+uaCodes = JSON.parse(localStorage.getItem("uacodes"));
+if (!uaCodes) {
+    uaCodes = [];
+}
+
+//ADD IN MEANS TO LIMIT AMOUNT OF LISTED CITIES TO 3 AND ONLY 3 . . . CITYLIST.LENGTH < 3
+
 
 
 addCityButton.addEventListener("click", addCityToSearch);
@@ -64,59 +65,88 @@ searchButton.addEventListener("click", function () {
     if (!uaCodes) {
         return
     } else {
-    fetch(teleportApiUrl + uaCodes[0] + "/salaries/")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            var citySalOne = data;
-            localStorage.setItem("citySalOne", JSON.stringify(citySalOne));
-            makeChart()})
-    fetch(teleportApiUrl + uaCodes[0] + "/scores/")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            var cityScoreOne = data;
-            localStorage.setItem("cityScoreOne", JSON.stringify(cityScoreOne))
-        })
-    if (uaCodes.length > 1){
-         fetch(teleportApiUrl + uaCodes[1] + "/salaries/") 
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            var citySalTwo = data;
-            localStorage.setItem("citySalTwo", JSON.stringify(citySalTwo));
-        })
-        fetch(teleportApiUrl + uaCodes[1] + "/scores/")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            var cityScoreTwo = data;
-            localStorage.setItem("cityScoreTwo", JSON.stringify(cityScoreTwo))
-        })
-        }
-    if (uaCodes.length = 3) {
-        fetch(teleportApiUrl + uaCodes[2] + "/salaries/") 
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            var citySalThree = data;
-            localStorage.setItem("citySalThree", JSON.stringify(citySalThree));
-        })
-        fetch(teleportApiUrl + uaCodes[2] + "/scores/")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            var cityScoreThree = data;
-            localStorage.setItem("cityScoreThree", JSON.stringify(cityScoreThree))
-        })
-    }
 
-}   
+
+        fetch(teleportApiUrl + uaCodes[0] + "/salaries/")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                var citySalOne = data;
+                localStorage.setItem("citySalOne", JSON.stringify(citySalOne));
+                makeChart()
+            })
+        fetch(teleportApiUrl + uaCodes[0] + "/scores/")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                var cityScoreOne = data;
+                localStorage.setItem("cityScoreOne", JSON.stringify(cityScoreOne))
+            })
+        if (uaCodes.length > 1) {
+            fetch(teleportApiUrl + uaCodes[1] + "/salaries/")
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    var citySalTwo = data;
+                    localStorage.setItem("citySalTwo", JSON.stringify(citySalTwo));
+                })
+            fetch(teleportApiUrl + uaCodes[1] + "/scores/")
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    var cityScoreTwo = data;
+                    localStorage.setItem("cityScoreTwo", JSON.stringify(cityScoreTwo))
+                })
+        }
+        if (uaCodes.length = 3) {
+            fetch(teleportApiUrl + uaCodes[2] + "/salaries/")
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    var citySalThree = data;
+                    localStorage.setItem("citySalThree", JSON.stringify(citySalThree));
+                })
+            fetch(teleportApiUrl + uaCodes[2] + "/scores/")
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    var cityScoreThree = data;
+                    localStorage.setItem("cityScoreThree", JSON.stringify(cityScoreThree))
+                })
+        }
+
+        if (uaCodes.length > 1){
+            fetch(teleportApiUrl + uaCodes[0] + "/details")
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data){
+                console.log(data.categories[3].data[8])
+                var accordion1 = document.getElementById("accordion1")
+                accordion1.innerHTML = accordion1.innerHTML =`<p>fun fact, the average cost of a meal is $ ${data.categories[3].data[8].currency_dollar_value}</p> `// add more p tages in the ``
+                // localStorage.setItem("mealsCost", JSON.stringify(data.categories[3].data[8].currency_dollar_value))
+            })
+          
+            }
+            
+            for (var i = 0; i < accordion1.length; i++) {
+                var accordionText = document.createElement("p");
+                accordionText.textContent = accordion1[i];
+                cityList.append(accordionText);
+            }
+           
+    
+
+
+
+
+    }
 })
+
 
