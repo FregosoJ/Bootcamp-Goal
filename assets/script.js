@@ -77,6 +77,7 @@ searchButton.addEventListener("click", async function () {
             var citySalOne = data;
             localStorage.setItem("citySalOne", JSON.stringify(citySalOne));
             })
+            
     await fetch(teleportApiUrl + uaCodes[0] + "/scores/")
         .then(function (response) {
             return response.json();
@@ -101,6 +102,7 @@ searchButton.addEventListener("click", async function () {
             var cityImagesOne = data;
             localStorage.setItem("cityImagesOne", JSON.stringify(cityImagesOne));
         })
+        
     if (uaCodes.length > 1){
          await fetch(teleportApiUrl + uaCodes[1] + "/salaries/") 
         .then(function (response) {
@@ -135,6 +137,7 @@ searchButton.addEventListener("click", async function () {
             localStorage.setItem("cityImagesTwo", JSON.stringify(cityImagesTwo));
         })
         }
+
     if (uaCodes.length === 3) {
         await fetch(teleportApiUrl + uaCodes[2] + "/salaries/") 
         .then(function (response) {
