@@ -19,6 +19,50 @@ function sluggifyInput () { //THIS FUNCTION NEEDS TO BE EDITED
     //  console.log(searchInput);
 }
 
+function makeCityInfo () {
+    var cityInfo = [];
+    if (uaCodes.length === 1) {
+        var cityScore = JSON.parse(localStorage.getItem("cityScoreOne"));
+        var cityDetails = JSON.parse(localStorage.getItem("cityDetailsOne"));
+        var cityImages = JSON.parse(localStorage.getItem("cityImagesOne"));
+        var cityName = JSON.parse(localStorage.getItem("selected cities"));
+        var city = {
+            name: cityName,
+            score: cityScore,
+            details: cityDetails,
+            images: cityImages
+        }
+        console.log(city);
+        cityInfo.push(city);
+    }
+    else if (uaCodes.length === 2) {
+        var cityNames = JSON.parse(localStorage.getItem("selected cities"));
+        var cityOneScore = JSON.parse(localStorage.getItem("cityScoreOne"));
+        var cityOneImages = JSON.parse(localStorage.getItem("cityImagesOne"));
+        var cityOneDetails = JSON.parse(localStorage.getItem("cityDetailsOne"));
+        var cityOneName = cityNames[0];
+        var cityTwoScore = JSON.parse(localStorage.getItem("cityScoreTwo"));
+        var cityTwoImages = JSON.parse(localStorage.getItem("cityImagesTwo"));
+        var cityTwoDetails = JSON.parse(localStorage.getItem("cityDetailsTwo"));
+        var cityTwoName = cityNames[1];
+        var cityOne = {
+            name: cityOneName,
+            score: cityOneScore,
+            details: cityOneDetails,
+            images: cityOneImages
+        };
+        var cityTwo = {
+            name: cityTwoName,
+            score: cityTwoScore,
+            details: cityTwoDetails,
+            images: cityTwoImages
+        }
+        cityInfo.push(cityOne);
+        cityInfo.push(cityTwo);
+    }
+console.log(cityInfo);
+}
+
 function addCityToSearch () {
     var rawCityInput = cityInput.value;
     if (!rawCityInput) {
@@ -166,7 +210,8 @@ searchButton.addEventListener("click", async function () {
             localStorage.setItem("cityImagesThree", JSON.stringify(cityImagesThree));
         })
         }
-        makeChart()
+        //makeChart()
+        makeCityInfo()
    }
 })
 
