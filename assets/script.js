@@ -6,12 +6,18 @@ var cityList = document.querySelector("#cities-in-chart");
 
 var teleportApiUrl = "https://api.teleport.org/api/urban_areas/" 
 var uaCodes = [];
+var selectedCities = [];
 
 
 function getUaCodes () {
     uaCodes = JSON.parse(localStorage.getItem("uacodes"))
 }
 
+function getCity () {
+    if (localStorage.getItem("selected cities")){
+    selectedCities = JSON.parse(localStorage.getItem("selected cities"));
+    }
+}
 
 function makeCityInfo () {
     var cityInfo = [];
@@ -97,7 +103,7 @@ function addCityToSearch () {
     if (!rawCityInput) {
         return;
     }
-    var selectedCities = JSON.parse(localStorage.getItem("selected cities"));
+    getCity();
     if (!selectedCities) {
         selectedCities = [];
     }
@@ -108,6 +114,7 @@ function addCityToSearch () {
     var listedCity = document.createElement("li");
     listedCity.textContent = selectedCities[i];
     cityList.append(listedCity);
+    listedCity.innerHTML += '<span onclick="closeli(this)" style="float:right;cursor:pointer;">X</span>';
     }
     uaCodes = [];
     for(var i = 0; i < selectedCities.length; i++) {
@@ -121,7 +128,21 @@ function addCityToSearch () {
     if (!uaCodes) {
         uaCodes = [];
     }
-        
+    
+function closeli(x) {
+    for (var i = 0; i < cityList.childElementCount; i++) {
+        if (cityList.children[i] === x.parentElement) {
+            getCity();
+            selectedCities.splice(i, 1);
+            localStorage.setItem("selected cities", JSON.stringify(selectedCities));
+            getUaCodes();
+            uaCodes.splice(i, 1);
+            localStorage.setItem("uacodes", JSON.stringify(uaCodes));
+        }
+    }
+    cityInput.value = "";
+    x.parentElement.remove();
+}
 
 addCityButton.addEventListener("click", addCityToSearch);
 clearButton.addEventListener("click", function () {
