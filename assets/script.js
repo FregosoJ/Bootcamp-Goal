@@ -49,7 +49,7 @@ function addCityToSearch() {
         localStorage.setItem("uacodes", JSON.stringify(uaCodes)); 
     }
     localStorage.setItem("uacodes", JSON.stringify(uaCodes));
-}
+
 uaCodes = JSON.parse(localStorage.getItem("uacodes"));
 if (!uaCodes) {
     uaCodes = [];
