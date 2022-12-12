@@ -60,7 +60,44 @@ function makeCityInfo () {
         cityInfo.push(cityOne);
         cityInfo.push(cityTwo);
     }
+    else if (uaCodes.length === 3) {
+        var cityNames = JSON.parse(localStorage.getItem("selected cities"));
+        var cityOneScore = JSON.parse(localStorage.getItem("cityScoreOne"));
+        var cityOneImages = JSON.parse(localStorage.getItem("cityImagesOne"));
+        var cityOneDetails = JSON.parse(localStorage.getItem("cityDetailsOne"));
+        var cityOneName = cityNames[0];
+        var cityTwoScore = JSON.parse(localStorage.getItem("cityScoreTwo"));
+        var cityTwoImages = JSON.parse(localStorage.getItem("cityImagesTwo"));
+        var cityTwoDetails = JSON.parse(localStorage.getItem("cityDetailsTwo"));
+        var cityTwoName = cityNames[1];
+        var cityThreeScore = JSON.parse(localStorage.getItem("cityScoreThree"));
+        var cityThreeImages = JSON.parse(localStorage.getItem("cityImagesThree"));
+        var cityThreeDetails = JSON.parse(localStorage.getItem("cityDetailsThree"));
+        var cityThreeName = cityNames[2];
+        var cityOne = {
+            name: cityOneName,
+            score: cityOneScore,
+            details: cityOneDetails,
+            images: cityOneImages
+        };
+        var cityTwo = {
+            name: cityTwoName,
+            score: cityTwoScore,
+            details: cityTwoDetails,
+            images: cityTwoImages
+        }
+        var cityThree = {
+            name: cityThreeName,
+            score: cityThreeScore,
+            details: cityThreeDetails,
+            images: cityThreeImages
+        }
+        cityInfo.push(cityOne);
+        cityInfo.push(cityTwo);
+        cityInfo.push(cityThree);
+    }
 console.log(cityInfo);
+localStorage.setItem("city info", JSON.stringify(cityInfo));
 }
 
 function addCityToSearch () {
