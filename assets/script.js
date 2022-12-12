@@ -7,32 +7,108 @@ var accordionText = document.querySelector("#accordion-item")
 
 var teleportApiUrl = "https://api.teleport.org/api/urban_areas/"
 var uaCodes = [];
-//var selectedCities=[];
+
 
 function getUaCodes() {
     uaCodes = JSON.parse(localStorage.getItem("uacodes"))
 }
-function sluggifyInput() { //THIS FUNCTION NEEDS TO BE EDITED
-    // for(var i = 0; i < rawCityInput.length; i++) {
-    //     rawCityInput = rawCityInput.replace(" ", "-")
-    //  }
-    // var searchInput = "slug:" + rawCityInput.toLowerCase();
-    //  console.log(searchInput);
+
+
+function makeCityInfo () {
+    var cityInfo = [];
+    if (uaCodes.length === 1) {
+        var cityScore = JSON.parse(localStorage.getItem("cityScoreOne"));
+        var cityDetails = JSON.parse(localStorage.getItem("cityDetailsOne"));
+        var cityImages = JSON.parse(localStorage.getItem("cityImagesOne"));
+        var cityName = JSON.parse(localStorage.getItem("selected cities"));
+        var city = {
+            name: cityName,
+            score: cityScore,
+            details: cityDetails,
+            images: cityImages
+        }
+        cityInfo.push(city);
+    }
+    else if (uaCodes.length === 2) {
+        var cityNames = JSON.parse(localStorage.getItem("selected cities"));
+        var cityOneScore = JSON.parse(localStorage.getItem("cityScoreOne"));
+        var cityOneImages = JSON.parse(localStorage.getItem("cityImagesOne"));
+        var cityOneDetails = JSON.parse(localStorage.getItem("cityDetailsOne"));
+        var cityOneName = cityNames[0];
+        var cityTwoScore = JSON.parse(localStorage.getItem("cityScoreTwo"));
+        var cityTwoImages = JSON.parse(localStorage.getItem("cityImagesTwo"));
+        var cityTwoDetails = JSON.parse(localStorage.getItem("cityDetailsTwo"));
+        var cityTwoName = cityNames[1];
+        var cityOne = {
+            name: cityOneName,
+            score: cityOneScore,
+            details: cityOneDetails,
+            images: cityOneImages
+        };
+        var cityTwo = {
+            name: cityTwoName,
+            score: cityTwoScore,
+            details: cityTwoDetails,
+            images: cityTwoImages
+        }
+        cityInfo.push(cityOne);
+        cityInfo.push(cityTwo);
+    }
+    else if (uaCodes.length === 3) {
+        var cityNames = JSON.parse(localStorage.getItem("selected cities"));
+        var cityOneScore = JSON.parse(localStorage.getItem("cityScoreOne"));
+        var cityOneImages = JSON.parse(localStorage.getItem("cityImagesOne"));
+        var cityOneDetails = JSON.parse(localStorage.getItem("cityDetailsOne"));
+        var cityOneName = cityNames[0];
+        var cityTwoScore = JSON.parse(localStorage.getItem("cityScoreTwo"));
+        var cityTwoImages = JSON.parse(localStorage.getItem("cityImagesTwo"));
+        var cityTwoDetails = JSON.parse(localStorage.getItem("cityDetailsTwo"));
+        var cityTwoName = cityNames[1];
+        var cityThreeScore = JSON.parse(localStorage.getItem("cityScoreThree"));
+        var cityThreeImages = JSON.parse(localStorage.getItem("cityImagesThree"));
+        var cityThreeDetails = JSON.parse(localStorage.getItem("cityDetailsThree"));
+        var cityThreeName = cityNames[2];
+        var cityOne = {
+            name: cityOneName,
+            score: cityOneScore,
+            details: cityOneDetails,
+            images: cityOneImages
+        };
+        var cityTwo = {
+            name: cityTwoName,
+            score: cityTwoScore,
+            details: cityTwoDetails,
+            images: cityTwoImages
+        }
+        var cityThree = {
+            name: cityThreeName,
+            score: cityThreeScore,
+            details: cityThreeDetails,
+            images: cityThreeImages
+        }
+        cityInfo.push(cityOne);
+        cityInfo.push(cityTwo);
+        cityInfo.push(cityThree);
+    }
+localStorage.setItem("city info", JSON.stringify(cityInfo));
 }
 
+function printCities() {
+    var allCityDetails = JSON.parse(localStorage.getItem("city info"))
+   console.log(allCityDetails)
+}
+
+
 function addCityToSearch() {
-    var rawCityInput = cityInput.value;
+    var rawCityInput = cityInfo.value;
     if (!rawCityInput) {
         return;
     }
-    console.log(rawCityInput);
     var selectedCities = JSON.parse(localStorage.getItem("selected cities"));
     if (!selectedCities) {
         selectedCities = [];
     }
-    console.log(selectedCities);
     selectedCities.push(rawCityInput);
-    console.log(selectedCities);
     localStorage.setItem("selected cities", JSON.stringify(selectedCities));
     cityList.innerHTML = "";
     for (var i = 0; i < selectedCities.length; i++) {
@@ -48,16 +124,11 @@ function addCityToSearch() {
          }
         localStorage.setItem("uacodes", JSON.stringify(uaCodes)); 
     }
-    localStorage.setItem("uacodes", JSON.stringify(uaCodes));
-
-uaCodes = JSON.parse(localStorage.getItem("uacodes"));
-if (!uaCodes) {
-    uaCodes = [];
-}
-
-//ADD IN MEANS TO LIMIT AMOUNT OF LISTED CITIES TO 3 AND ONLY 3 . . . CITYLIST.LENGTH < 3
-
-
+    uaCodes = JSON.parse(localStorage.getItem("uacodes"));
+    if (!uaCodes) {
+        uaCodes = [];
+    }
+        
 
 addCityButton.addEventListener("click", addCityToSearch);
 clearButton.addEventListener("click", function () {
@@ -103,11 +174,6 @@ searchButton.addEventListener("click", async function () {
             var cityImagesOne = data;
             localStorage.setItem("cityImagesOne", JSON.stringify(cityImagesOne));
         })
-for (let i = 0; i < "/details".length; i++) {
-    data += "/details" + cityScoreOne;
-}
-
-        
     if (uaCodes.length > 1){
          await fetch(teleportApiUrl + uaCodes[1] + "/salaries/") 
         .then(function (response) {
@@ -178,6 +244,10 @@ for (let i = 0; i < "/details".length; i++) {
         })
         }
         makeChart()
+        makeCityInfo()
+        printCities()
+
+
    }
 })
 
