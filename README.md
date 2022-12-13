@@ -2,8 +2,9 @@
 
 ## Description
 
-Persons seeking to acquire new skills and affect a career change often enroll in a coding boot camp. Upon graduation, these new graduates possess not just an entirely new professional skillset, but must also learn to navigate an entirely new profession. 
+Persons seeking to acquire new skills and affect a career change often enroll in a coding boot camp. Upon graduation, these new graduates possess not just an entirely new professional skillset, but must also learn to navigate an entirely new profession. With this grand life change often comes the desire to relocate. Not just that, but a life of "digital nomadism" slowly represents a new reality for scores of tech workers. This tool was developed with the aim of assisting both the fresh boot camp graduate as well as the seasoned digital nomad. Users are now able to quickly and efficiently compare salaries and quality of life information accross a plethora of global markets. Additionally, users have the ability to generate novel comparisons unique to their specific aspirations. The Teleport API proved a remarkable resource in the amount of data afforded users. Nearly all data presented to users comes from this expansive API, and effectively navigating the data as well as deciding what data to privelege proved critical tasks. Over the course of development, the team came to appreciate the power APIs deliver to creative developers, and the ability of developers themselves to influence information's presentation, and thus its reception.
 
+Application is now live and may be accessed [here.](https://fregosoj.github.io/Bootcamp-Goal)
 ## Table of Contents
 
 - [Installation](#installation)
