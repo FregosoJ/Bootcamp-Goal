@@ -11,6 +11,8 @@
 
 ## Installation
 
+No special steps required for installation. The application may be accessed and utilized on any internet browser from any device connected to the internet.
+
 ## Usage
 
 ## Credits
