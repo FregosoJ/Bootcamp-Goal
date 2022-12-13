@@ -102,34 +102,35 @@ function makeCityInfo() {
 
 function printCities() {
     var allCityDetails = JSON.parse(localStorage.getItem("city info"))
-    console.log(allCityDetails) // list of data [] 
-    console.log(allCityDetails[0].name) //name
-    console.log(allCityDetails[0].details.categories[1].data[0].float_value * 1000000) //city size
-    console.log(allCityDetails[0].images.photos[0].image.web) // city img
-    console.log(allCityDetails[0].score.summary) // city summary 
+    var population = allCityDetails[0].details.categories[1].data[0].float_value 
     var weatherType = allCityDetails[0].details.categories[2].data
-    console.log(weatherType[weatherType.length - 1].string_value) //weather
-    console.log(allCityDetails[0].score.categories[7]) // safty
-    // for (var i = 0; i < allCityDetails.length; i++) {
+    var climate = weatherType[weatherType.length - 1].string_value; 
     var accordDetails1 = document.getElementById("accordion1");
-    accordDetails1.innerHTML = `<p>${allCityDetails[0].score.summary}</p>`
-    //accordDetails1.innerHTML = `<p>${allCityDetails[0].details.categories[1].data[0].float_value}</p>`
-    //    accordionInput.append(accordDetails);
-    //    accordDetails.innerHTML += printCities();
-    //    accordDetails.innerHTML += accordDetails
     var img1 = document.createElement("img");
     img1.setAttribute("src", allCityDetails[0].images.photos[0].image.web);
     img1.classList.add("accordion-image");
+    accordDetails1.innerHTML = ""
     accordDetails1.append(img1);
+    accordDetails1.innerHTML += `<p>${allCityDetails[0].score.summary}</p>`
+    var accordionTitle = document.querySelector("#accordionTitleOne");
+    accordionTitle.textContent = allCityDetails[0].name
+    var populationWeather = document.createElement("ul");
+    accordDetails1.append(populationWeather);
+    var populationLi = document.createElement("li");
+    var weather = document.createElement("li");
+    populationLi.innerHTML = "<strong>Population:</strong> " + population + " million";
+    weather.innerHTML = "<strong>Climate:</strong> " + climate;
+    populationWeather.append(populationLi);
+    populationWeather.append(weather); 
 
 
 
-    var accordDetails2 = document.getElementById("accordion2");
-accordDetails2.innerHTML = `<p>${allCityDetails[0].score.summary}</p>`
+    //var accordDetails2 = document.getElementById("accordion2");
+//accordDetails2.innerHTML = `<p>${allCityDetails[0].score.summary}</p>`
 
 
-var accordDetails3 = document.getElementById("accordion3");
-accordDetails3.innerHTML = `<p>${allCityDetails[0].score.summary}</p>`
+// var accordDetails3 = document.getElementById("accordion3");
+// accordDetails3.innerHTML = `<p>${allCityDetails[0].score.summary}</p>`
 }
 
 
