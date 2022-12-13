@@ -174,9 +174,10 @@ function closeli(x) {
         if (cityList.children[i] === x.parentElement) {
             getCity();
             selectedCities.splice(i, 1);
-            localStorage.setItem("selected cities", JSON.stringify(selectedCities));
             getUaCodes();
             uaCodes.splice(i, 1);
+            localStorage.clear();
+            localStorage.setItem("selected cities", JSON.stringify(selectedCities));
             localStorage.setItem("uacodes", JSON.stringify(uaCodes));
         }
     }
