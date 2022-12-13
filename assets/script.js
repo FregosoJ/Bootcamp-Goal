@@ -121,15 +121,17 @@ function printCities() {
     img1.setAttribute("src", allCityDetails[0].images.photos[0].image.web);
     img1.classList.add("accordion-image");
     accordDetails1.append(img1);
+    var accordionTitle = document.querySelector("#accordionTitleOne");
+    accordionTitle.textContent = allCityDetails[0].name
 
 
 
-    var accordDetails2 = document.getElementById("accordion2");
-accordDetails2.innerHTML = `<p>${allCityDetails[0].score.summary}</p>`
+    //var accordDetails2 = document.getElementById("accordion2");
+//accordDetails2.innerHTML = `<p>${allCityDetails[0].score.summary}</p>`
 
 
-var accordDetails3 = document.getElementById("accordion3");
-accordDetails3.innerHTML = `<p>${allCityDetails[0].score.summary}</p>`
+// var accordDetails3 = document.getElementById("accordion3");
+// accordDetails3.innerHTML = `<p>${allCityDetails[0].score.summary}</p>`
 }
 
 
