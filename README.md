@@ -2,6 +2,8 @@
 
 ## Description
 
+Persons seeking to acquire new skills and affect a career change often enroll in a coding boot camp. Upon graduation, these new graduates possess not just an entirely new professional skillset, but must also learn to navigate an entirely new profession. 
+
 ## Table of Contents
 
 - [Installation](#installation)
