@@ -104,20 +104,24 @@ function printCities() {
     var allCityDetails = JSON.parse(localStorage.getItem("city info"))
     console.log(allCityDetails) // list of data [] 
     console.log(allCityDetails[0].name) //name
-    console.log(allCityDetails[0].details.categories[1].data[0].float_value) //city size
-    // console.log(allCityDetails[0].images.photos.image.photo[0].image.web.value) // city img
+    console.log(allCityDetails[0].details.categories[1].data[0].float_value * 1000000) //city size
+    console.log(allCityDetails[0].images.photos[0].image.web) // city img
     console.log(allCityDetails[0].score.summary) // city summary 
-    console.log(allCityDetails[0].details.categories[2].data[8]) //weather
+    var weatherType = allCityDetails[0].details.categories[2].data
+    console.log(weatherType[weatherType.length - 1].string_value) //weather
     console.log(allCityDetails[0].score.categories[7]) // safty
     // for (var i = 0; i < allCityDetails.length; i++) {
     var accordDetails1 = document.getElementById("accordion1");
     accordDetails1.innerHTML = `<p>${allCityDetails[0].score.summary}</p>`
-    accordDetails1.innerHTML = `<p>${allCityDetails[0].details.categories[1].data[0].float_value}</p>`
+    //accordDetails1.innerHTML = `<p>${allCityDetails[0].details.categories[1].data[0].float_value}</p>`
     //    accordionInput.append(accordDetails);
     //    accordDetails.innerHTML += printCities();
     //    accordDetails.innerHTML += accordDetails
     var img1 = document.createElement("img");
-    img1.imgContent = accordDetails1
+    img1.setAttribute("src", allCityDetails[0].images.photos[0].image.web);
+    img1.classList.add("accordion-image");
+    accordDetails1.append(img1);
+
 
 
     var accordDetails2 = document.getElementById("accordion2");
