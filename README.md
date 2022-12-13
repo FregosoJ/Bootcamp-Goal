@@ -25,7 +25,17 @@ Users are presented with a search bar at the top left corner of the page. Users 
 
 ![Search Functionality](/assets/images/Screenshot_20221213_123256.png)
 
-Once a user has selected at least one global city and one prospective job, after clicking the "Search" button users will be presented with a series of charts depicting median salaries in the selected cities for the selected jobs. The number of charts generated will correspond with the number of cities selected, and the number of bars within each graph corresponsds 
+Once a user has selected at least one global city and one prospective job, after clicking the "Search" button users will be presented with a series of charts depicting median salaries in the selected cities for the selected jobs. The number of charts generated will correspond with the number of jobs selected, and the number of bars within each graph corresponsds with the number of cities the user selected. The right side of the page holds an accordion menu that will populate with an image, summary, and brief quality of life information pertaining to each city selected. The following screenshot demonstrates the page a user will see generated after clicking the "Search" button.
+
+![Search Results Display](/assets/images/Screenshot_20221213_123354.png)
+
+This final screenshot demonstrates the display of the entire webpage following a users' successful search. To run a new search, the user may edit their parameters and click "Search" again, or they may reset the search tool completely by selecting the "Clear" button. This will delete all reset all parameters and reload the page for the user. 
+
+![Full Application End Result](/assets/images/Screenshot_20221213_123507.png)
+
+Did the uer love the last search they did but they navigated away from the page or forgot the parameters they used? No need to worry, the last search saves to the browser, and clicking the "Search" button will call right back up the last search you've done. Remember, only the "Clear" button resets all parameters! The screenshot below demonstrates a user reloading their last search. The user is presented the accordion information corresponding with the last cities they searched as well as jobs they've selected.
+
+![Last Search Displayed](/assets/images/Screenshot_20221213_123549.png)
 
 
 ## Credits
