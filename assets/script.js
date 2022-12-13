@@ -112,9 +112,12 @@ function printCities() {
         currentAccordion.innerHTML = "";
         var cityImage = document.createElement("img");
         cityImage.setAttribute("src", allCityDetails[i].images.photos[0].image.web);
-        cityImage.classList.add("accordion-image");
+        cityImage.classList.add("accordion-image", "my-3");
         currentAccordion.append(cityImage);
-        currentAccordion.innerHTML += `<p>${allCityDetails[i].score.summary}</p>`
+        var citySummary = document.createElement("p");
+        citySummary.classList.add("ms-2");
+        citySummary.innerHTML = allCityDetails[i].score.summary;
+        currentAccordion.append(citySummary);
         currentAccordionTitle.textContent = allCityDetails[i].name;
         var populationWeather = document.createElement("ul");
         currentAccordion.append(populationWeather);
@@ -127,10 +130,6 @@ function printCities() {
     }
 }
     
-
-
-
-
 
 function addCityToSearch() {
     var rawCityInput = cityInput.value;
@@ -183,6 +182,7 @@ clearButton.addEventListener("click", function () {
     localStorage.clear();
     location.reload();
 })
+
 searchButton.addEventListener("click", async function () {
     getUaCodes();
     if (!uaCodes) {
