@@ -15,6 +15,19 @@ No special steps required for installation. The application may be accessed and 
 
 ## Usage
 
+**PLEASE NOTE ALL PHOTOS DEPICTING SITE FUNCTIONALITY ARE FROM PROJECT'S BETA STAGE**
+
+Upon loading the application, users will be presented with the following screen
+
+![Application Load Page](/assets/images/Screenshot_20221213_123103.png)
+
+Users are presented with a search bar at the top left corner of the page. Users may type a major urban global market into the search bar, and a list of options will autocomplete, guiding the user to options where data is avaliable. As the user finds their desired city and clicks the "Add" button next to the search bar, a list of selected cities will appear below the search bar with an "X" button next to the city should the user desire to remove that option from their search. Additionally, users are presented with four switches labelled with prospective job titles for boot camp graduates. The user will be given a distinct chart for each switch activated. The screenshot below demonstrates functionality as users select and add cities and jobs to their search parameters. 
+
+![Search Functionality](/assets/images/Screenshot_20221213_123256.png)
+
+Once a user has selected at least one global city and one prospective job, after clicking the "Search" button users will be presented with a series of charts depicting median salaries in the selected cities for the selected jobs. The number of charts generated will correspond with the number of cities selected, and the number of bars within each graph corresponsds 
+
+
 ## Credits
 
 All credit belongs to [Jonathan Fregoso](https://github.com/FregosoJ), [Colby Wagenbach](https://github.com/csanchezwagenbach), and [Phil Chi](https://github.com/luluco92). Additionally, this project could not have been developed without the teams developing and maintaining both the [Teleport API](https://developers.teleport.org/) and [Image-Charts API](https://www.image-charts.com/).
