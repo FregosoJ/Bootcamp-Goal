@@ -6,3 +6,27 @@
 .hidden {
     display: none;
 }
+
+body {
+    --bs-body-font-family: var(--bs-font-monospace);
+    background-color: rgba(169, 11, 217, 0.616);
+}
+
+
+.accordion-body {
+    background-color: rgba(114, 40, 234, 0.417);
+}
+
+.container-fluid {
+    background-color:rgba(49, 7, 133, 0.51);
+    height: 200%;
+}
+
+.btn {
+    background-color: rgba(49, 47, 134, 0.469);
+    color: aliceblue;
+}
+
+.accordionTitleOne {
+background-color: rgba(3, 0, 208, 0.469);
+}
