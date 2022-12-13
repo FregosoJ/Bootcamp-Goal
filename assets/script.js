@@ -127,6 +127,13 @@ function printCities() {
         weather.innerHTML = "<strong>Climate:</strong> " + climate;
         populationWeather.append(populationLi);
         populationWeather.append(weather); 
+        var radarURL = `https://image-charts.com/chart?chs=480x480&cht=r&chxt=r&chtt=Teleport%20Scores&chl=${allCityDetails[i].score.categories[0].name.replaceAll(" ", "%20")}|${allCityDetails[i].score.categories[1].name.replaceAll(" ", "%20")}|${allCityDetails[i].score.categories[2].name}|${allCityDetails[i].score.categories[5].name}|${allCityDetails[i].score.categories[7].name}|${allCityDetails[i].score.categories[13].name.replaceAll(" ", "%20")}&chd=t:${allCityDetails[i].score.categories[0].score_out_of_10},${allCityDetails[i].score.categories[1].score_out_of_10},${allCityDetails[i].score.categories[2].score_out_of_10},${allCityDetails[i].score.categories[5].score_out_of_10},${allCityDetails[i].score.categories[7].score_out_of_10},${allCityDetails[i].score.categories[13].score_out_of_10}`;
+        var cityRadar = document.createElement("img");
+        cityRadar.setAttribute("src", radarURL);
+        cityRadar.setAttribute("style", "width:88%");
+        currentAccordion.append(cityRadar);
+
+
     }
 }
     
