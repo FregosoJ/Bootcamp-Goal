@@ -6,3 +6,41 @@
 .hidden {
     display: none;
 }
+
+body {
+    --bs-body-font-family: var(--bs-font-monospace);
+    background-color: rgba(169, 11, 217, 0.616);
+    position: relative;
+    height: 100vh;
+}
+
+
+.accordion-body {
+    background-color: rgba(140, 82, 235, 0.417);
+}
+
+.container-fluid {
+    background-color:rgba(49, 7, 133, 0.51);
+    height: 200%;
+}
+
+.btn {
+    background-color: rgba(49, 47, 134, 0.469);
+    color: aliceblue;
+}
+
+.accordionTitleOne {
+background-color: rgba(3, 0, 208, 0.469);
+}
+
+footer {
+    background-image: url("https://www.telstra.us.com/content/dam/shared-component-assets/tecom/networks/global-networks/global-internet/hero-banner-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    background-position: center center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* background-size:; */
+}
