@@ -10,16 +10,21 @@ var teleportApiUrl = "https://api.teleport.org/api/urban_areas/"
 var uaCodes = [];
 var selectedCities = [];
 
+//The function below reaches into local storage and pulls out the item saved as "uacodes". UAcodes are the id's tied to unique cities the user has selected for their search. Here, we are pulling those codes out of local storage.
 
 function getUaCodes() {
     uaCodes = JSON.parse(localStorage.getItem("uacodes"))
 }
+
+//As above, here we are pulling the cities a user has selected for their search. "Selected cities" is the raw input users have provided, before it has been rendered into a format that may be used for Teleport API calls.
 
 function getCity() {
     if (localStorage.getItem("selected cities")) {
         selectedCities = JSON.parse(localStorage.getItem("selected cities"));
     }
 }
+
+//The long function below takes the returned data from API calls and reorganizes it. Each searched-for city represents an object, then up to three of those objects are pushed into an array which is then in turn pushed into local storage. We organized the data this way so that we could effectively loop through it when it came time to print this data onto the page. 
 
 function makeCityInfo() {
     var cityInfo = [];
@@ -100,6 +105,8 @@ function makeCityInfo() {
     localStorage.setItem("city info", JSON.stringify(cityInfo));
 }
 
+//The function below loops through the array of objects made in the above function, grabs data we wanted to see printed on the page, dynamically creates HTML elements where the data will print, and finally, appends the HTML elements into the waiting accordion. There is an additional call made to image-chart to generate the radar graphs depicting Teleport quality of life information, and that returned image is printed at the bottom of the menu display. The amount of times the loop will run corresponds with the number of city-objects inside the array.
+
 function printCities() {
     var allCityDetails = JSON.parse(localStorage.getItem("city info"));
     var accordion = document.querySelector("#accordionExample");
@@ -137,6 +144,7 @@ function printCities() {
     }
 }
     
+//Here we take the city a user typed into the input and we add it to the list of cities to be searched. Additionally, we add on a button next to each city so that a user may delete individual cities befor they search should they so desire. Lines 168-172 represent transforming the user's raw input into a format that the API can effectively utilize.
 
 function addCityToSearch() {
     var rawCityInput = cityInput.value;
@@ -169,6 +177,8 @@ if (!uaCodes) {
     uaCodes = [];
 }
 
+//The function below affords delete functionality to the x's generated next to cities to be searched.
+
 function closeli(x) {
     for (var i = 0; i < cityList.childElementCount; i++) {
         if (cityList.children[i] === x.parentElement) {
@@ -185,11 +195,18 @@ function closeli(x) {
     x.parentElement.remove();
 }
 
+//Event listener on the "Add" button next to search input area
+
 addCityButton.addEventListener("click", addCityToSearch);
+
+//Event listener on the "Clear" button below job switches. Clicking this button clears all local storage and reloads the page.
+
 clearButton.addEventListener("click", function () {
     localStorage.clear();
     location.reload();
 })
+
+//Event listener on the "Search" button. Upon clicking, up to 12 API calls are made. Data received from these calls is immediately stored into local storage, before it is ultimately refashioned into a city object then pushed into an array in the function defined near the top of this file. After the calls have successfully been completed, chart and print functions are called to update display on page.
 
 searchButton.addEventListener("click", async function () {
     getUaCodes();
@@ -306,6 +323,8 @@ searchButton.addEventListener("click", async function () {
 
     }
 })
+
+//Autocomplete functionality. Each urban area for which there is data is listed is included in the array below. The idea was to facilitate users into passing input that corresponded with avaliable data.
 
 $(function () {
     var uaNames = [

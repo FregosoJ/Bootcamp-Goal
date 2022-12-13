@@ -4,6 +4,8 @@ function makeChart() {
 
 document.getElementById("chart-container").innerHTML = '';
 
+//Data here is pulled out of local storage and saved into variables.
+
 var cityobject = JSON.parse(localStorage.getItem("citySalOne"));
 var cityobject2 = JSON.parse(localStorage.getItem("citySalTwo"));
 var cityobject3 = JSON.parse(localStorage.getItem("citySalThree"));
@@ -12,17 +14,13 @@ cityname = cityname.replace(cityname[0],cityname[0].toUpperCase());
 cityname = cityname.replace("-"," ");
 var cityname2;
 var cityname3;
-console.log(cityobject);
 
+//The function below loops through salaries data pulled from local storage and generates a url to be sent to the image-chart API. Function takes salaries input, refigures it into a url ammenable to image-chart, and returns the generated image by printing it to the center of the page.
 
-// a loop can be put here to make multiple charts for multiple cities. one chart per checkbox
  for (i=0; i<cityobject.salaries.length; i++) {
  if (document.getElementById("job-" + i)) {
     if (document.getElementById("job-" + i).checked) { 
          var newfigure =  document.createElement("figure");
-         //newfigure.innerHTML = '<h3>' + cityname + '</h3>';
-
-         //var chartURL = 'https://image-charts.com/chart?chs=700x190&chd=t:' + document.getElementById("data1").value + ',' + document.getElementById("data2").value + '&cht=p3&chl=Hello%7CWorld&chan&chf=ps0-0,lg,45,ffeb3b,0.2,f44336,1|ps0-1,lg,45,8bc34a,0.2,009688,1';
          var chartURL = 'https://image-charts.com/chart?chs=700x300&cht=bvs&chtt=Median Salary for ' + cityobject.salaries[i].job.title + '&chd=a:' + cityobject.salaries[i].salary_percentiles.percentile_50;
 
          if (cityobject2) {
