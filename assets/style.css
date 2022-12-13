@@ -14,7 +14,7 @@ body {
 
 
 .accordion-body {
-    background-color: rgba(114, 40, 234, 0.417);
+    background-color: rgba(140, 82, 235, 0.417);
 }
 
 .container-fluid {
@@ -29,4 +29,11 @@ body {
 
 .accordionTitleOne {
 background-color: rgba(3, 0, 208, 0.469);
+}
+
+footer {
+    background-image: url("https://www.telstra.us.com/content/dam/shared-component-assets/tecom/networks/global-networks/global-internet/hero-banner-small.jpg");
+    background-size: 50% 50%;
+    height: 700px;
+    /* background-size:; */
 }
