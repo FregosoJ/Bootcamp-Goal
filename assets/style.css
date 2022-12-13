@@ -10,6 +10,8 @@
 body {
     --bs-body-font-family: var(--bs-font-monospace);
     background-color: rgba(169, 11, 217, 0.616);
+    position: relative;
+    height: 100vh;
 }
 
 
@@ -33,7 +35,12 @@ background-color: rgba(3, 0, 208, 0.469);
 
 footer {
     background-image: url("https://www.telstra.us.com/content/dam/shared-component-assets/tecom/networks/global-networks/global-internet/hero-banner-small.jpg");
-    background-size: 50% 50%;
-    height: 700px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    background-position: center center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     /* background-size:; */
 }
