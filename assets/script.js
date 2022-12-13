@@ -101,37 +101,33 @@ function makeCityInfo() {
 }
 
 function printCities() {
-    var allCityDetails = JSON.parse(localStorage.getItem("city info"))
-    var population = allCityDetails[0].details.categories[1].data[0].float_value 
-    var weatherType = allCityDetails[0].details.categories[2].data
-    var climate = weatherType[weatherType.length - 1].string_value; 
-    var accordDetails1 = document.getElementById("accordion1");
-    var img1 = document.createElement("img");
-    img1.setAttribute("src", allCityDetails[0].images.photos[0].image.web);
-    img1.classList.add("accordion-image");
-    accordDetails1.innerHTML = ""
-    accordDetails1.append(img1);
-    accordDetails1.innerHTML += `<p>${allCityDetails[0].score.summary}</p>`
-    var accordionTitle = document.querySelector("#accordionTitleOne");
-    accordionTitle.textContent = allCityDetails[0].name
-    var populationWeather = document.createElement("ul");
-    accordDetails1.append(populationWeather);
-    var populationLi = document.createElement("li");
-    var weather = document.createElement("li");
-    populationLi.innerHTML = "<strong>Population:</strong> " + population + " million";
-    weather.innerHTML = "<strong>Climate:</strong> " + climate;
-    populationWeather.append(populationLi);
-    populationWeather.append(weather); 
-
-
-
-    //var accordDetails2 = document.getElementById("accordion2");
-//accordDetails2.innerHTML = `<p>${allCityDetails[0].score.summary}</p>`
-
-
-// var accordDetails3 = document.getElementById("accordion3");
-// accordDetails3.innerHTML = `<p>${allCityDetails[0].score.summary}</p>`
+    var allCityDetails = JSON.parse(localStorage.getItem("city info"));
+    var accordion = document.querySelector("#accordionExample");
+    for (var i = 0; i < allCityDetails.length; i++) {
+        var population = allCityDetails[i].details.categories[1].data[0].float_value 
+        var weatherType = allCityDetails[i].details.categories[2].data
+        var climate = weatherType[weatherType.length - 1].string_value;
+        var currentAccordion = accordion.children[i].children[1];
+        var currentAccordionTitle = accordion.children[i].children[0].children[0];
+        currentAccordion.innerHTML = "";
+        var cityImage = document.createElement("img");
+        cityImage.setAttribute("src", allCityDetails[i].images.photos[0].image.web);
+        cityImage.classList.add("accordion-image");
+        currentAccordion.append(cityImage);
+        currentAccordion.innerHTML += `<p>${allCityDetails[i].score.summary}</p>`
+        currentAccordionTitle.textContent = allCityDetails[i].name;
+        var populationWeather = document.createElement("ul");
+        currentAccordion.append(populationWeather);
+        var populationLi = document.createElement("li");
+        var weather = document.createElement("li");
+        populationLi.innerHTML = "<strong>Population:</strong> " + population + " million";
+        weather.innerHTML = "<strong>Climate:</strong> " + climate;
+        populationWeather.append(populationLi);
+        populationWeather.append(weather); 
+    }
 }
+    
+
 
 
 
