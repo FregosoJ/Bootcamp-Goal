@@ -9,18 +9,21 @@
 
 body {
     --bs-body-font-family: var(--bs-font-monospace);
-    background-color: rgba(169, 11, 217, 0.616);
+    /* background-color: rgba(45, 57, 118, 0.88); */
+    background-color:rgb(48, 58, 103);
     position: relative;
     height: 100vh;
+    /* background-color: rgba(169, 11, 217, 0.616); */
 }
 
 
 .accordion-body {
-    background-color: rgba(140, 82, 235, 0.417);
+    background-color: rgb(48, 58, 103);
 }
 
 .container-fluid {
-    background-color:rgba(49, 7, 133, 0.51);
+    /* background-color:rgba(45, 57, 118, 0.713); */
+    background-color: rgb(121, 159, 215);
     height: 200%;
 }
 
@@ -30,7 +33,7 @@ body {
 }
 
 .accordionTitleOne {
-background-color: rgba(3, 0, 208, 0.469);
+background-color: rgba(208, 0, 90, 0.469);
 }
 
 footer {
@@ -39,8 +42,9 @@ footer {
     background-repeat: no-repeat;
     height: 400px;
     background-position: center center;
-    position: absolute;
+    /* position: absolute; */
     bottom: 0;
     width: 100%;
     /* background-size:; */
 }
+
