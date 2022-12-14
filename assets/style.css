@@ -9,11 +9,9 @@
 
 body {
     --bs-body-font-family: var(--bs-font-monospace);
-    /* background-color: rgba(45, 57, 118, 0.88); */
     background-color:rgb(48, 58, 103);
     position: relative;
     height: 100vh;
-    /* background-color: rgba(169, 11, 217, 0.616); */
 }
 
 
@@ -22,7 +20,6 @@ body {
 }
 
 .container-fluid {
-    /* background-color:rgba(45, 57, 118, 0.713); */
     background-color: rgb(121, 159, 215);
     height: 200%;
 }
@@ -42,9 +39,7 @@ footer {
     background-repeat: no-repeat;
     height: 400px;
     background-position: center center;
-    /* position: absolute; */
     bottom: 0;
     width: 100%;
-    /* background-size:; */
 }
 
